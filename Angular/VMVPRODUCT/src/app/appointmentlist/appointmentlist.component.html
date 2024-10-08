@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row">
+        <!-- Appointment List Section -->
+        <div class="col-md-8">
+            <div class="row">
+                <h3>Appointments</h3>
+                <div class="appointment-list row">
+                    <!-- Loop through the appointment list -->
+                     @for (item of appointmentList; track $index){
+                    <div class="col-md-4" >
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">{{item.name}}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{item.mobileNo}}</h6>
+                                <p class="card-text">{{item.area}}</p>
+                                <a href="#" class="card-link">{{item.appointmentDate}}</a>
+                                <a href="#" class="card-link">{{item.appointmentTime}}</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+
+        <!-- New Appointment Form Section -->
+        <div class="col-md-4">
+            <div class="formbold-main-wrapper">
+                <div class="formbold-form-wrapper">
+                    <form (submit)="bookAppointMent()">
+                        <div class="head">
+                            <h5>New Appointment</h5>
+                        </div>
+                        <div class="formbold-mb-5">
+                            <label for="name" class="formbold-form-label"> Full Name </label>
+                            <input type="text" name="name" id="name" placeholder="Full Name" class="formbold-form-input"
+                                [(ngModel)]="newappointment.name" />
+                        </div>
+                        <div class="formbold-mb-5">
+                            <label for="phone" class="formbold-form-label"> Phone Number </label>
+                            <input type="text" name="phone" id="phone" placeholder="Enter your phone number"
+                                class="formbold-form-input" [(ngModel)]="newappointment.mobileNo" />
+                        </div>
+
+                        <!-- Gender Radio Buttons -->
+                        <div class="formbold-mb-5">
+                            <label class="formbold-form-label">Gender</label>
+                            <div>
+                                <input type="radio" name="gender" id="male" value="Male"
+                                    [(ngModel)]="newappointment.gender" />
+                                <label for="male">Male</label>
+                            </div>
+                            <div>
+                                <input type="radio" name="gender" id="female" value="Female"
+                                    [(ngModel)]="newappointment.gender" />
+                                <label for="female">Female</label>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap formbold--mx-3">
+                            <div class="w-full sm:w-half formbold-px-3">
+                                <div class="formbold-mb-5 w-full">
+                                    <label for="date" class="formbold-form-label"> Date </label>
+                                    <input type="date" name="date" id="date" class="formbold-form-input"
+                                        [(ngModel)]="newappointment.appointmentDate" />
+                                </div>
+                            </div>
+                            <div class="w-full sm:w-half formbold-px-3">
+                                <div class="formbold-mb-5">
+                                    <label for="time" class="formbold-form-label"> Time </label>
+                                    <input type="time" name="time" id="time" class="formbold-form-input"
+                                        [(ngModel)]="newappointment.appointmentTime" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="formbold-mb-5 formbold-pt-3">
+                            <label class="formbold-form-label formbold-form-label-2"> Address Details </label>
+                            <div class="flex flex-wrap formbold--mx-3">
+                                <div class="w-full sm:w-half formbold-px-3">
+                                    <div class="formbold-mb-5">
+                                        <input type="text" name="area" id="area" placeholder="Enter area"
+                                            class="formbold-form-input" [(ngModel)]="newappointment.area" />
+                                    </div>
+                                </div>
+                                <div class="w-full sm:w-half formbold-px-3">
+                                    <div class="formbold-mb-5">
+                                        <input type="text" name="city" id="city" placeholder="Enter city"
+                                            class="formbold-form-input" [(ngModel)]="newappointment.city" />
+                                    </div>
+                                </div>
+                                <div class="w-full sm:w-half formbold-px-3">
+                                    <div class="formbold-mb-5">
+                                        <input type="text" name="state" id="state" placeholder="Enter state"
+                                            class="formbold-form-input" [(ngModel)]="newappointment.state" />
+                                    </div>
+                                </div>
+                                <div class="w-full sm:w-half formbold-px-3">
+                                    <div class="formbold-mb-5">
+                                        <input type="text" name="postcode" id="post-code" placeholder="Post Code"
+                                            class="formbold-form-input" [(ngModel)]="newappointment.postcode" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="formbold-btn">Book Appointment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

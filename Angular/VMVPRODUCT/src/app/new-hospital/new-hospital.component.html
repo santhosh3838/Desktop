@@ -1,0 +1,105 @@
+<div class="form-container">
+    <div class="form-image">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp" alt="Registration" />
+    </div>
+    <div class="Heading">  
+        <h2>HOSPITAL REGISTRATION </h2>
+        <div class="form">
+            <form [formGroup]="registrationForm" (ngSubmit)="onRegister()" novalidate>
+                <div class="form-row">
+                    <div class="input-group">
+                        <input type="text" [(ngModel)]="hospitalObj.hospitalName" formControlName="hospitalName" placeholder="Hospital Name" required />
+                        <span class="error-message]" >
+                            {{ registrationForm.get('hospitalName')?.errors?.['required'] ? 'Hospital name is required.' : 
+                               registrationForm.get('hospitalName')?.errors?.['pattern'] ? 'Hospital name should only contain letters.' : '' }}
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" [(ngModel)]="hospitalObj.userName" formControlName="userName" placeholder="User Name" required />
+                        <span class="error-message">
+                            {{ registrationForm.get('userName')?.errors?.['required'] ? 'Username is required.' : 
+                            registrationForm.get('userName')?.errors?.['pattern'] ? 'Username should only contain letters.' : '' }} 
+                        </span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" [(ngModel)]="hospitalObj.password" formControlName="password" placeholder="Password" required />
+                    <span class="error-message">
+                        {{ registrationForm.get('password')?.errors?.['required'] ? 'Password is required.' : 
+                           registrationForm.get('password')?.errors?.['pattern'] ? 'Password should contain alphanumeric characters.' : '' }}
+                    </span>
+                </div>
+
+                <div class="form-row full-width">
+                    <div class="input-group">
+                        <input type="text" [(ngModel)]="hospitalObj.hospitalAddress" formControlName="hospitalAddress" placeholder="Hospital Address" required />
+                        <span class="error-message">
+                            {{ registrationForm.get('hospitalAddress')?.errors?.['required'] ? 'Hospital address is required.' : '' }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <select formControlName="state" required>
+                            <option value="" disabled selected>State</option>
+                            <option value="state1">State 1</option>
+                            <option value="state2">State 2</option>
+                            <option value="state3">State 3</option>
+                        </select>
+                        <span class="error-message">
+                            {{ registrationForm.get('state')?.errors?.['required'] ? 'State is required.' : '' }}
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <select formControlName="hospitalCity" required>
+                            <option value="" disabled selected>City</option>
+                            <option value="city1">City 1</option>
+                            <option value="city2">City 2</option>
+                            <option value="city3">City 3</option>
+                        </select>
+                        <span class="error-message">
+                            {{ registrationForm.get('city')?.errors?.['required'] ? 'City is required.' : '' }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-row full-width">
+                    <div class="input-group">
+                        <input type="text" [(ngModel)]="hospitalObj.hospitalId" formControlName="hospitalId" placeholder="Hospital ID" required pattern="[0-9]{6}" />
+                        <span class="error-message">
+                            {{ registrationForm.get('hospitalId')?.errors?.['required'] ? 'Hospital ID is required.' : 
+                               registrationForm.get('hospitalId')?.errors?.['pattern'] ? 'Hospital ID should be 6 digits.' : '' }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-row full-width">
+                    <div class="input-group">
+                        <input type="text" [(ngModel)]="hospitalObj.hospitalOwnerContactNo" formControlName="hospitalOwnerContactNo" placeholder="Hospital Owner Contact No" required />
+                        <span class="error-message">
+                            {{ registrationForm.get('hospitalOwnerContactNo')?.errors?.['required'] ? 'Hospital owner contact number is required.' : '' }}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-row full-width">
+                    <div class="input-group">
+                        <input type="email" [(ngModel)]="hospitalObj.hospitalEmailId" formControlName="email" placeholder="Hospital Email ID" required />
+                        <span class="error-message">
+                            {{ registrationForm.get('email')?.errors?.['required'] ? 'A valid email is required.' : 
+                                '' }}
+                                <!-- registrationForm.get('email')?.errors?.['email'] ? 'Email format is invalid.' : -->
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="reset-btn" >RESET ALL</button>
+                    <button type="submit" class="submit-btn" (click)="onRegister()">SUBMIT FORM</button>
+                </div>
+            </form>
+        </div>
+    </div> 
+</div>

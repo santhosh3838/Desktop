@@ -1,0 +1,47 @@
+<app-header></app-header> 
+<!-- this string interpolation converts boolean into string so it doesn't work for disabled attribute       -->
+<button disabled ="{{isDisabled}}">按钮</button>
+<!-- but in property bindind it will not convert -->
+<button [disabled]="isDisabled">按钮</button><br><br>
+
+<!-- class binding -->
+
+<button [class.active]="isActive" [class.no-active]="!isActive">click me</button><br> <br>
+<button [style.backgroundColor]="isActive ? 'red' : 'blue'">click me</button><br> <br>
+<!-- <button (click)="buttonclicked">click me</button> -->
+<!-- event filtering -->
+<input type="text" (keyup)="keyEnter($event)"><br> <br>
+
+<input type="text" (keyup.enter)="keyupfiltering($event)"><br> <br>
+
+<!-- two way data binding -->
+<input type="text" [value]="username" #username (keyup.enter)="updateUsername(username)"><br><br> 
+
+<input type="text" [(ngModel)]="username"><br> <br><!-- this is two way data binding -->
+
+
+
+<h4 *ngIf="isAdmin">ADmin</h4>
+<h4 *ngIf="isGuest">Guest</h4>
+<h4 *ngIf="isMember">Member</h4>
+<div [ngSwitch]="role">
+    <h4 *ngSwitchCase="'admin'">welcome Admin</h4>
+    <h4 *ngSwitchCase="'guest'">welcome Guest</h4>
+    <h4 *ngSwitchCase="'member'">welcome Member</h4>
+    <h4 *ngSwitchDefault>Default</h4>
+</div>
+@switch (role) {
+    @case('admin'){
+        <h4>welcome Admin</h4>
+    }
+    @case('guest'){
+        <h4>welcome Guest</h4>
+    }
+    @case('member'){
+        <h4>welcome Member</h4>
+    }
+    @default{
+        <h4>Pls login</h4>
+    }
+}
+<h1 [ngClass]="{'active':!isActive,'no-active':isActive}">Hello World</h1>     
