@@ -47,10 +47,7 @@ export class NewAppointment {
     isFirstVisit: boolean;
     naration: string;
     hospitalId: number;
-    state: string;
-    postcode: number;
-    area: string;
-
+    hospitalName: string;
 
     constructor() {
         this.age = 0;
@@ -59,12 +56,10 @@ export class NewAppointment {
         this.city = '';
         this.gender = '';
         this.name = '';
-        this.naration = '';
+        this.naration = '';  
         this.mobileNo = '';
         this.isFirstVisit = false;
         this.hospitalId = 0;
-        this.state = '';
-        this.postcode = 0;
-        this.area = '';
+        this.hospitalName = '';
     }
 }

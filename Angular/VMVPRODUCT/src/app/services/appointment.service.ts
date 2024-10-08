@@ -19,4 +19,8 @@ export class AppointmentService {
   GetAppointmentsByHospital(id: number): Observable<ApiResponseModel> {
     return this.http.get<ApiResponseModel>(environment.api_url + Constant.API_END_POINT.Get_appointments_ByHospital + id)
   }
+
+  getAlltheappointments(): Observable<ApiResponseModel> {
+    return this.http.get<ApiResponseModel>(environment.api_url + Constant.API_END_POINT.get_All_appointments)
+}
 }

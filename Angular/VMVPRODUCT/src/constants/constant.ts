@@ -3,6 +3,7 @@ export const Constant={
         ADD_NEW_HOSPITAL:'AddNewHospital',
         Login:'Login',
         addNewAppointment:'AddNewAppointment',
-        Get_appointments_ByHospital:'GetAllAppointmentsByHospitalid?id='
+        Get_appointments_ByHospital:'GetAllAppointmentsByHospitalid?id=',
+        get_All_appointments:'GetAllAppointments'
     }
 }

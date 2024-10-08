@@ -1,8 +1,10 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiResponseModel, Hospital } from '../../core/classes/Hospital';
 import { HospitalListService } from '../services/hospital-list.service';
+import { Router } from '@angular/router';
+import { inject } from '@angular/core/testing';
 
 @Component({
   selector: 'app-new-hospital',
@@ -15,7 +17,7 @@ export class NewHospitalComponent {
   public registrationForm: FormGroup; // Declare the FormGroup
   public hospitalObj: Hospital = new Hospital();
   private isShow: boolean = false;
-
+private router=Inject(Router)
   constructor(private hospitalServ: HospitalListService, private fb: FormBuilder) {
     // Initialize the FormGroup
     this.registrationForm = this.fb.group({
@@ -26,7 +28,7 @@ export class NewHospitalComponent {
       state: ['', Validators.required],
       hospitalCity: ['', Validators.required],
       hospitalId: ['', [Validators.required, Validators.pattern('[0-9]{6}')]],
-      hospitalOwnerContactNo: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+      hospitalOwnerContactNo: ['', [Validators.required, Validators.pattern('[0-9]{9}')]],
       email: ['', [Validators.required,Validators.email]],
     });
   }
@@ -47,6 +49,7 @@ export class NewHospitalComponent {
     this.hospitalServ.registerhospital(this.hospitalObj).subscribe((res: ApiResponseModel) => {
       if (res.result) {
         alert("Registration successful");
+       this.router.navigateByUrl('app-root')
       } else {
         alert(res.message);
       }

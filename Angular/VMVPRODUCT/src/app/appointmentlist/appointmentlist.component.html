@@ -3,7 +3,6 @@
         <!-- Appointment List Section -->
         <div class="col-md-8">
             <div class="row">
-                <h3>Appointments</h3>
                 <div class="appointment-list row">
                     <!-- Loop through the appointment list -->
                      @for (item of appointmentList; track $index){
@@ -12,9 +11,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{item.name}}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">{{item.mobileNo}}</h6>
-                                <p class="card-text">{{item.area}}</p>
+                                <p class="card-text">{{item.age}}</p>
                                 <a href="#" class="card-link">{{item.appointmentDate}}</a>
                                 <a href="#" class="card-link">{{item.appointmentTime}}</a>
+                                <a href="#" class="card-link text-success" *ngIf="loggedUserdata.userName=='vmv1'">{{item.hospitalName}}</a>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
         <div class="col-md-4">
             <div class="formbold-main-wrapper">
                 <div class="formbold-form-wrapper">
-                    <form (submit)="bookAppointMent()">
+                    <form >
                         <div class="head">
                             <h5>New Appointment</h5>
                         </div>
@@ -75,12 +75,12 @@
                         </div>
 
                         <div class="formbold-mb-5 formbold-pt-3">
-                            <label class="formbold-form-label formbold-form-label-2"> Address Details </label>
+                            <label class="formbold-form-label formbold-form-label-2"> </label>
                             <div class="flex flex-wrap formbold--mx-3">
                                 <div class="w-full sm:w-half formbold-px-3">
                                     <div class="formbold-mb-5">
-                                        <input type="text" name="area" id="area" placeholder="Enter area"
-                                            class="formbold-form-input" [(ngModel)]="newappointment.area" />
+                                        <input type="text" name="age" id="age" placeholder="Enter age"
+                                            class="formbold-form-input" [(ngModel)]="newappointment.age" />
                                     </div>
                                 </div>
                                 <div class="w-full sm:w-half formbold-px-3">
@@ -91,21 +91,21 @@
                                 </div>
                                 <div class="w-full sm:w-half formbold-px-3">
                                     <div class="formbold-mb-5">
-                                        <input type="text" name="state" id="state" placeholder="Enter state"
-                                            class="formbold-form-input" [(ngModel)]="newappointment.state" />
+                                        <input type="adrress" name="naration" id="naration" placeholder="Enter naration"
+                                            class="formbold-form-input" [(ngModel)]="newappointment.naration" />
                                     </div>
                                 </div>
                                 <div class="w-full sm:w-half formbold-px-3">
                                     <div class="formbold-mb-5">
-                                        <input type="text" name="postcode" id="post-code" placeholder="Post Code"
-                                            class="formbold-form-input" [(ngModel)]="newappointment.postcode" />
+                                        <input type="text" name="isFirstVisit+" id="isFirstVisit" placeholder="isFirstVisit"
+                                            class="formbold-form-input" [(ngModel)]="newappointment.isFirstVisit" />
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div>
-                            <button type="submit" class="formbold-btn">Book Appointment</button>
+                            <button type="submit" class="formbold-btn" (click)="bookAppointMent()">Book Appointment</button>
                         </div>
                     </form>
                 </div>
